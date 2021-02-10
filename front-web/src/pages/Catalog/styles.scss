@@ -1,0 +1,19 @@
+.catalog-container{
+  margin-top: 26px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.catalog-title{
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+}
+
+.catalog-products{
+  margin-top: 43px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  grid-gap: 30px 33px;
+  justify-content: space-between;
+}
