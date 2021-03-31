@@ -13,8 +13,6 @@ public class AppConfig {
 	@Value("${jwt.secret}")
 	private String jwtSecret;
 	
-	
-	
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
