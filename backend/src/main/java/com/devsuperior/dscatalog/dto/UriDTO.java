@@ -22,9 +22,7 @@ public class UriDTO implements Serializable{
 		this.uri = uri;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 	
 	
 }
