@@ -46,7 +46,7 @@ public class ProductsServiceTests {
 		dependentId = 4L;
 
 		product = ProductFactory.createProduct();
-
+		
 		page = new PageImpl<>(List.of(product));
 
 		Mockito.when(repository.getOne(existingId)).thenReturn(product);
@@ -55,6 +55,7 @@ public class ProductsServiceTests {
 				.thenReturn(page);
 
 		Mockito.when(repository.save(ArgumentMatchers.any())).thenReturn(product);
+		
 
 		Mockito.when(repository.findById(existingId)).thenReturn(Optional.of(product));
 		Mockito.when(repository.findById(nonExistingId)).thenReturn(Optional.empty());
@@ -77,11 +78,11 @@ public class ProductsServiceTests {
 
 	@Test
 	public void updateShouldReturnProductDTOWhenIdExist() {
-		ProductDTO productDTO = ProductFactory.createProductDTO();
+		ProductDTO dto = new ProductDTO();
 
-		ProductDTO dto = service.update(existingId, productDTO);
+		ProductDTO result = service.update(existingId, dto);
 
-		Assertions.assertNotNull(dto);
+		Assertions.assertNotNull(result);
 	}
 	
 	@Test
