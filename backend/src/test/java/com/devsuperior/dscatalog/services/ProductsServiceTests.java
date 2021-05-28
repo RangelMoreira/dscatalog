@@ -18,7 +18,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.devsuperior.dscatalog.dto.ProductDTO;
+import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
+import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.ProductRepository;
 import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
 import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
@@ -32,6 +34,9 @@ public class ProductsServiceTests {
 
 	@Mock
 	private ProductRepository repository;
+	
+	@Mock
+	private CategoryRepository categoryRepository;
 
 	private long existingId;
 	private long nonExistingId;
@@ -56,6 +61,7 @@ public class ProductsServiceTests {
 
 		Mockito.when(repository.save(ArgumentMatchers.any())).thenReturn(product);
 		
+		Mockito.when(categoryRepository.getOne(existingId)).thenReturn(new Category(1L, "Nome"));
 
 		Mockito.when(repository.findById(existingId)).thenReturn(Optional.of(product));
 		Mockito.when(repository.findById(nonExistingId)).thenReturn(Optional.empty());
@@ -78,8 +84,10 @@ public class ProductsServiceTests {
 
 	@Test
 	public void updateShouldReturnProductDTOWhenIdExist() {
-		ProductDTO dto = new ProductDTO();
-
+//		ProductDTO dto = new ProductDTO();
+		
+		ProductDTO dto = ProductFactory.createProductDTO();
+		
 		ProductDTO result = service.update(existingId, dto);
 
 		Assertions.assertNotNull(result);
