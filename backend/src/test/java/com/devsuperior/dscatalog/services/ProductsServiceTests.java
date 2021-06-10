@@ -84,7 +84,6 @@ public class ProductsServiceTests {
 
 	@Test
 	public void updateShouldReturnProductDTOWhenIdExist() {
-//		ProductDTO dto = new ProductDTO();
 		
 		ProductDTO dto = ProductFactory.createProductDTO();
 		
