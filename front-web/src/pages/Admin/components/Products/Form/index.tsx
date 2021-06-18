@@ -1,4 +1,4 @@
-import { makeRequest } from 'core/utils/request';
+import { makePrivateRequest} from 'core/utils/request';
 import React, { useState } from 'react';
 import BaseForm from '../../BaseForm';
 import './styles.scss';
@@ -40,7 +40,7 @@ const Form = () =>{
 
     }
     
-    makeRequest({url:'/products', method: 'POST', data: payload })
+    makePrivateRequest({url:'/products', method: 'POST', data: payload })
       .then(() =>{
         setFormData({name:'', category:'', price: '', description:''});
       })
