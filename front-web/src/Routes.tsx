@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Auth from './pages/Auth';
 import history from './core/utils/history';
 
+
 const Routes = () =>(
   <Router history={history}>
     <Navbar/>
