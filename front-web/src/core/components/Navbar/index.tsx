@@ -1,5 +1,4 @@
-import React from 'react';
-import {Link,NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './styles.scss';
 
 const Navbar = () => (
@@ -18,9 +17,11 @@ const Navbar = () => (
         <li>
           <NavLink to="/products">CATÁLOGO</NavLink>
         </li>
+
         <li>
           <NavLink to="/admin">ADMIN</NavLink>
         </li>
+
       </ul>
     </div>
   </nav>
