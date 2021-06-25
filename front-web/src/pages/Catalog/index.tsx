@@ -17,7 +17,7 @@ const Catalog = () => {
   useEffect(() => {
     const params = {
       page: activePage,
-      linesPerPage: 12
+      linesPerPage: 15
     }
     setIsLoading(true);
     makeRequest({ url: '/products', params })
