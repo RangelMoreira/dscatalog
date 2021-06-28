@@ -1,25 +1,29 @@
-.product-card{
+.product-card {
   width: 245px;
   padding-top: 20px;
   padding: 20px 20px 30px 20px;
   text-align: center;
+
+  .product-price-container {
+    margin-top: 20px;
+  }
 }
 
-.product-info{
-  border-top: 1px solid #E1E1E1;
+.product-info {
+  border-top: 1px solid #e1e1e1;
   text-align: left;
   padding-top: 15px;
   margin-top: 15px;
 }
 
-.product-name{
+.product-name {
   font-size: 18px;
   line-height: 25px;
   letter-spacing: -0.015em;
-  color: #263238;;
+  color: #263238;
 }
 
-.product-card-image{
+.product-card-image {
   width: 160px;
   height: 160px;
 }

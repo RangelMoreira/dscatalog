@@ -1,0 +1,23 @@
+.product-card-admin {
+  margin-bottom: 20px;
+  border-radius: 10px;
+
+  .product-currency {
+    font-size: 14px;
+  }
+
+  .product-price{
+    font-size: 24px;
+  }
+}
+
+.product-card-image-admin {
+  width: 100px;
+  height: 100px;
+}
+
+.product-card-name-admin {
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.015em;
+}
