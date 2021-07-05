@@ -17,7 +17,7 @@ type LocationState ={
 }
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormState>();
+  const { register, handleSubmit, errors } = useForm<FormState>();
   const [hasError, setHasError] = useState(false);
   const history = useHistory();
   let location = useLocation<LocationState>();
@@ -25,6 +25,8 @@ const Login = () => {
   const { from } = location.state || { from: { pathname: "/admin" } };
 
   const onSubmit = (data: FormState) => {
+   
+    
     makeLogin(data)
       .then(response => {
         setHasError(false);
@@ -51,7 +53,8 @@ const Login = () => {
             type="email"
             className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
             placeholder="Email"
-            {...register('username', {
+            name= "username"
+            ref={register({
               required: "Campo obrigatório",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -72,7 +75,9 @@ const Login = () => {
             type="password"
             className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
             placeholder="Senha"
-            {...register('password', { required: "Campo obrigatório", minLength: 5 })}
+            name="password"
+            ref = {register({ required: "Campo obrigatório", minLength: 5 })}
+            
           />
           {errors.password && (
             <div className="invalid-feedback d-block">

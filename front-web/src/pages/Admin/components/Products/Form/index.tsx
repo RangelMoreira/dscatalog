@@ -1,16 +1,21 @@
-import { toast } from 'react-toastify';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import Select from 'react-select';
 import BaseForm from '../../BaseForm';
 import './styles.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import { Category } from 'core/types/Product';
+import PriceField from './priceField';
 
-type FormState = {
+export type FormState = {
   name: string;
   price: string;
   imgUrl: string;
   description: string;
+  categories: Category[];
 }
 
 type ParamsType = {
@@ -18,9 +23,11 @@ type ParamsType = {
 }
 
 const Form = () => {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormState>();
+  const { register, handleSubmit,  errors, setValue, control } = useForm<FormState>();
   const history = useHistory();
   const { productId } = useParams<ParamsType>();
+  const [isLoadingCategories, setIsLoadingCategories] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
   const isEditing = productId !== 'create';
   const formTitle = isEditing ? 'EDITAR UM PRODUTO' : 'CADASTRAR UM PRODUTO';
 
@@ -32,20 +39,26 @@ const Form = () => {
           setValue('price', response.data.price);
           setValue('imgUrl', response.data.imgUrl);
           setValue('description', response.data.description);
+          setValue('categories', response.data.categories);
 
         })
     }
 
   }, [productId, isEditing, setValue]);
 
-  console.log(productId)
+  useEffect(() => {
+    setIsLoadingCategories(true);
+    makeRequest({ url: '/categories' })
+      .then(response => setCategories(response.data.content))
+      .finally(() => setIsLoadingCategories(false));
+  }, [])
 
   const onSubmit = (data: FormState) => {
     //console.log(data);
-    makePrivateRequest({ 
-      url: isEditing ? `/products/${productId}` : '/products', 
-      method: isEditing ? 'PUT' : 'POST', 
-      data 
+    makePrivateRequest({
+      url: isEditing ? `/products/${productId}` : '/products',
+      method: isEditing ? 'PUT' : 'POST',
+      data
     })
       .then(() => {
         toast.info('Produto salvo com sucesso!')
@@ -58,7 +71,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <BaseForm 
+      <BaseForm
         title={formTitle}
       >
         <div className="row">
@@ -66,7 +79,7 @@ const Form = () => {
 
             <div className="margin-bottom-30">
               <input
-                {...register('name',
+                ref ={register(
                   {
                     required: "Campo obrigatório",
                     minLength: { value: 5, message: 'O campo deve ter no mínimo 5 caracteres' },
@@ -86,13 +99,29 @@ const Form = () => {
             </div>
 
             <div className="margin-bottom-30">
-              <input
-                {...register('price', { required: "Campo obrigatório" })}
-                name="price"
-                type="number"
-                className="form-control input-base"
-                placeholder="Preço"
+              <Controller
+                as={Select}
+                defaultValue=""
+                name="categories"
+                rules={{ required: "Campo obrigatório" }}
+                control={control}
+                options={categories}
+                isLoading={isLoadingCategories}
+                getOptionLabel={(option: Category) => option.name}
+                getOptionValue={(option: Category) => String(option.id)}
+                classNamePrefix="categories-select"
+                placeholder="Categorias..."
+                isMulti
               />
+              {errors.categories && (
+                <div className="invalid-feedback d-block">
+                  Campo obrigatório!
+                </div>
+              )}
+            </div>
+
+            <div className="margin-bottom-30">
+              <PriceField control={control}/>
               {errors.price && (
                 <div className="invalid-feedback d-block">
                   {errors.price.message}
@@ -102,7 +131,7 @@ const Form = () => {
 
             <div className="margin-bottom-30">
               <input
-                {...register('imgUrl', { required: "Campo obrigatório" })}
+                ref={register({ required: "Campo obrigatório" })}
                 name="imgUrl"
                 type="text"
                 className="form-control input-base"
@@ -118,7 +147,7 @@ const Form = () => {
 
           <div className="col-6">
             <textarea
-              {...register('description', { required: "Campo obrigatório" })}
+              ref={register( { required: "Campo obrigatório" })}
               name="description"
               className="form-control input-base"
               placeholder="Descrição"
