@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Category } from 'core/types/Product';
 import PriceField from './priceField';
+import ImageUpload from '../ImageUpload';
 
 export type FormState = {
   name: string;
@@ -28,6 +29,9 @@ const Form = () => {
   const { productId } = useParams<ParamsType>();
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [uploadedImgUrl, setUploadedImgUrl] = useState(''); 
+  const [productImgUrl, setProductImgUrl] = useState(''); 
+  
   const isEditing = productId !== 'create';
   const formTitle = isEditing ? 'EDITAR UM PRODUTO' : 'CADASTRAR UM PRODUTO';
 
@@ -37,7 +41,8 @@ const Form = () => {
         .then(response => {
           setValue('name', response.data.name);
           setValue('price', response.data.price);
-          setValue('imgUrl', response.data.imgUrl);
+        
+          setProductImgUrl(response.data.imgUrl);
           setValue('description', response.data.description);
           setValue('categories', response.data.categories);
 
@@ -54,11 +59,15 @@ const Form = () => {
   }, [])
 
   const onSubmit = (data: FormState) => {
-    //console.log(data);
+    const payload ={
+      ...data,
+      imgUrl: uploadedImgUrl
+    }
+
     makePrivateRequest({
       url: isEditing ? `/products/${productId}` : '/products',
       method: isEditing ? 'PUT' : 'POST',
-      data
+      data:payload
     })
       .then(() => {
         toast.info('Produto salvo com sucesso!')
@@ -67,6 +76,10 @@ const Form = () => {
       .catch(() => {
         toast.error('Erro ao salvar produto!')
       })
+  }
+
+  const onUploadSuccess = (imgUrl: string) =>{
+    setUploadedImgUrl(imgUrl);
   }
 
   return (
@@ -130,18 +143,10 @@ const Form = () => {
             </div>
 
             <div className="margin-bottom-30">
-              <input
-                ref={register({ required: "Campo obrigatório" })}
-                name="imgUrl"
-                type="text"
-                className="form-control input-base"
-                placeholder="Imagem"
-              />
-              {errors.price && (
-                <div className="invalid-feedback d-block">
-                  {errors.price.message}
-                </div>
-              )}
+              <ImageUpload 
+                onUploadSuccess={onUploadSuccess}
+                productImgUrl={productImgUrl}
+              />      
             </div>
           </div>
 
