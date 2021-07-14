@@ -3,9 +3,9 @@ import qs from 'qs';
 import { CLIENT_ID, CLIENT_SECRET, getSessionData, logout } from './auth';
 
 
-type LoginData ={
-  username:String;
-  password:String;
+type LoginData = {
+  username: String;
+  password: String;
 }
 
 const BASE_URL = 'http://localhost:8080';
@@ -13,19 +13,19 @@ const BASE_URL = 'http://localhost:8080';
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
-  if (error.response.status === 401){
+  if (error.response.status === 401) {
     logout();
-    
+
   }
 
   return Promise.reject(error);
 });
 
 
-export const makeRequest = (params: AxiosRequestConfig) =>{
+export const makeRequest = (params: AxiosRequestConfig) => {
   return axios({
-   ...params,
-   baseURL:BASE_URL
+    ...params,
+    baseURL: BASE_URL
   });
 }
 
@@ -36,11 +36,11 @@ export const makePrivateRequest = (params: AxiosRequestConfig) => {
     'Authorization': `Bearer ${sessionData.access_token}`
   }
 
-  return makeRequest({...params,headers});
+  return makeRequest({ ...params, headers });
 
 }
 
-export const makeLogin = (loginData: LoginData) =>{
+export const makeLogin = (loginData: LoginData) => {
   const token = `${CLIENT_ID}:${CLIENT_SECRET}`;
 
   const headers = {
@@ -48,7 +48,7 @@ export const makeLogin = (loginData: LoginData) =>{
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 
-  const payload = qs.stringify({ ...loginData, grant_type:'password'});
+  const payload = qs.stringify({ ...loginData, grant_type: 'password' });
 
   return makeRequest({ url: '/oauth/token', data: payload, method: 'POST', headers });
 
