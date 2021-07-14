@@ -96,41 +96,48 @@ const FormUser = () => {
       <BaseForm
         title={formTitle}
       >
+
         <div className="name">
-          <input
-            ref={register(
-              {
-                required: "Campo obrigatório"
-              }
+          <div className="first-name">
+            <input
+              ref={register(
+                {
+                  required: "Campo obrigatório"
+                }
+              )}
+              name="firstName"
+              type="text"
+              className="form-control input-base"
+              placeholder="Nome"
+            />
+            {errors.firstName && (
+              <div className="invalid-feedback d-block">
+                {errors.firstName.message}
+              </div>
             )}
-            name="firstName"
-            type="text"
-            className="form-control input-base first-name"
-            placeholder="Nome"
-          />
-          {errors.firstName && (
-            <div className="invalid-feedback d-block">
-              {errors.firstName.message}
-            </div>
-          )}
+          </div>
 
-          <input
-            ref={register(
-              {
-                required: "Campo obrigatório"
-              }
+          <div className="last-name">
+            <input
+              ref={register(
+                {
+                  required: "Campo obrigatório"
+                }
+              )}
+              name="lastName"
+              type="text"
+              className="form-control input-base"
+              placeholder="Sobrenome"
+            />
+            {errors.lastName && (
+              <div className="invalid-feedback d-block">
+                {errors.lastName.message}
+              </div>
             )}
-            name="lastName"
-            type="text"
-            className="form-control input-base last-name"
-            placeholder="Sobrenome"
-          />
+          </div>
 
-          {errors.lastName && (
-            <div className="invalid-feedback d-block">
-              {errors.lastName.message}
-            </div>
-          )}
+
+
         </div>
 
         <div className="email">
@@ -153,49 +160,57 @@ const FormUser = () => {
           )}
         </div>
 
-        <div className="password">
-          <input
-            ref={register(
-              {
-                required: "Campo obrigatório",
-                minLength: { value: 5, message: 'O campo deve ter no mínimo 5 caracteres' },
-                maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
-              }
+        <div className="pass">
+          <div className="password">
+            <input
+              ref={register(
+                {
+                  required: "Campo obrigatório",
+                  minLength: { value: 5, message: 'O campo deve ter no mínimo 5 caracteres' },
+                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
+                }
+              )}
+              name="password"
+              type="password"
+              className="form-control input-base"
+
+              placeholder="Digite aqui a Senha"
+            />
+            {errors.password && (
+              <div className="invalid-feedback d-block">
+                {errors.password.message}
+              </div>
             )}
-            name="password"
-            type="password"
-            className="form-control input-base first-password"
+          </div>
 
-            placeholder="Digite aqui a Senha"
-          />
-          {errors.password && (
-            <div className="invalid-feedback d-block">
-              {errors.password.message}
-            </div>
-          )}
+          <div className="repeat-password">
+            <input
+              ref={register(
+                {
+                  required: "Campo obrigatório",
+                  minLength: { value: 8, message: 'O campo deve ter no mínimo 5 caracteres' },
+                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
+                }
+              )}
+              name="repeatPassword"
+              type="password"
+              className="form-control input-base"
+              placeholder="Repita aqui a Senha"
 
-          <input
-            ref={register(
-              {
-                required: "Campo obrigatório",
-                minLength: { value: 5, message: 'O campo deve ter no mínimo 5 caracteres' },
-                maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
-              }
+            />
+
+            {!isPasswordEquals && (
+              <div className="error-password">
+                As senhas digitadas devem ser iguais
+              </div>
             )}
-            name="repeatPassword"
-            type="password"
-            className="form-control input-base repeat-password"
-            placeholder="Repita aqui a Senha"
-
-          />
+          </div>
 
         </div>
-
-        {!isPasswordEquals && (
-          <div className="error-password">
-            As senhas digitadas devem ser iguais
-          </div>
-        )}
+        
+        <span className="span-password">
+          A sua senha deve ter pelo menos 8 caracteres e conter pelo menos uma número
+        </span>
 
         <input
           ref={register()}
@@ -209,4 +224,3 @@ const FormUser = () => {
 
 }
 export default FormUser;
-
