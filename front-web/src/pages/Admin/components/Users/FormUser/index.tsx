@@ -144,7 +144,12 @@ const FormUser = () => {
           <input
             ref={register(
               {
-                required: "Campo obrigatório"
+                required: "Campo obrigatório",
+
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Valores não correspondem ao formato de e-mail"
+                }
               }
             )}
             name="email"
@@ -166,8 +171,12 @@ const FormUser = () => {
               ref={register(
                 {
                   required: "Campo obrigatório",
-                  minLength: { value: 5, message: 'O campo deve ter no mínimo 5 caracteres' },
-                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
+                  minLength: { value: 8, message: 'O campo deve ter no mínimo 8 caracteres' },
+                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' },
+                  pattern: {
+                    value: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                    message: "Valores não correspondem ao formato de senha"
+                  }
                 }
               )}
               name="password"
@@ -189,7 +198,11 @@ const FormUser = () => {
                 {
                   required: "Campo obrigatório",
                   minLength: { value: 8, message: 'O campo deve ter no mínimo 5 caracteres' },
-                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' }
+                  maxLength: { value: 60, message: 'O campo deve ter no máximo 60 caracteres' },
+                  pattern: {
+                    value: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                    message: "Valores não correspondem ao formato de senha"
+                  }
                 }
               )}
               name="repeatPassword"
@@ -207,7 +220,7 @@ const FormUser = () => {
           </div>
 
         </div>
-        
+
         <span className="span-password">
           A sua senha deve ter pelo menos 8 caracteres e conter pelo menos uma número
         </span>
