@@ -37,7 +37,7 @@ const List = () => {
   const getProducts = useCallback(() => {
     const params = {
       page: activePage,
-      linesPerPage: 15,
+      linesPerPage: 4,
       name: name,
       categoryId: category?.id
 

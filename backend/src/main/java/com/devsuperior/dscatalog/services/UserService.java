@@ -45,8 +45,8 @@ public class UserService implements UserDetailsService{
 
 	
 	@Transactional(readOnly = true)
-	public Page<UserDTO> findAllPaged(PageRequest pageRequest ){
-		Page<User>  list = repository.findAll(pageRequest);
+	public Page<UserDTO> findAllPaged(String name,PageRequest pageRequest ){
+		Page<User>  list = repository.find(name, pageRequest);
 		
 		return list.map(x-> new UserDTO(x));
 		
