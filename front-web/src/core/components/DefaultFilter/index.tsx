@@ -6,10 +6,12 @@ type Props = {
   name?: string;
   placeholderText?: string;
   handleChangeName: (name: string) => void;
-  handleChangeDirection: (direction: string) => void;
+  handleChangeDirection: (direction: string, label: string) => void;
   clearFilters: () => void;
-
+  optionValue: number;
 }
+
+
 const options = [
   { value: 'DESC', label: 'Filtrar por Recentes' },
   { value: 'ASC', label: 'Filtrar por Antigos' },
@@ -19,9 +21,11 @@ const options = [
 const DefaultFilters = ({
   name,
   placeholderText,
+  optionValue,
   handleChangeName,
   handleChangeDirection,
   clearFilters,
+  
 
 }: Props) => {
 
@@ -34,6 +38,7 @@ const DefaultFilters = ({
           className="form-control"
           placeholder={`Pesquisar ${placeholderText}`}
           onChange={event => handleChangeName(event.target.value)}
+         
         />
         <SeachIcon />
       </div>
@@ -42,8 +47,10 @@ const DefaultFilters = ({
           key={`select-${options.values}`}
           classNamePrefix="default-select"
           className="filter-select-container"
-          onChange={value => handleChangeDirection(value?.value as string)}
+          onChange={value => handleChangeDirection(value?.value as string,
+            value?.label as string)}
           placeholder="Direção"
+          value={optionValue !== -1 ? options[optionValue] : null}
         />
 
       </div>

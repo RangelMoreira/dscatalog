@@ -4,6 +4,10 @@
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+
+  .select-container{
+    margin-right: 22px;
+  }
 }
 
 .filter-select-container {
@@ -12,12 +16,13 @@
   margin-right: 50px;
 
   .default-select__control {
-    width: 120%;
+    width: 130%;
     margin-right: 100px;
     height: 30px;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #e1e1e1;
+    
   }
 
   .default-select__indicator-separator {
@@ -26,5 +31,6 @@
 
   .default-select__placeholder {
     color: #9e9e9e !important;
+    
   }
 }

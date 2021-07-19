@@ -16,6 +16,7 @@ const ListCategory = () => {
 
   const [name, setName] = useState('');
   const [direction, setDirection] = useState('DESC');
+  const [optionValue, setOptionValue] = useState(-1); 
 
   const handleChangeName = (name: string) => {
     setName(name);
@@ -26,12 +27,15 @@ const ListCategory = () => {
   const handleChangeDirection = (direction: string) => {
     setDirection(direction);
     setActivePage(0);
+    setOptionValue(direction === 'ASC' ? 1 : 0);
+    
   }
 
   const clearFilters = () => {
     setActivePage(0);
     setDirection('DESC');
     setName('');
+    setOptionValue(-1);
   }
 
   const onRemove = (categoryId: number) => {
@@ -87,7 +91,7 @@ const ListCategory = () => {
           handleChangeName={handleChangeName}
           clearFilters={clearFilters}
           handleChangeDirection={handleChangeDirection}
-
+          optionValue={optionValue}
         />
       </div>
       <div className="admin-list-container">
