@@ -1,3 +1,17 @@
+.main-row{
+  display: flex;
+  flex-direction: row;
+  .col-user{
+    width: 80%;
+  }
+  .col-buttons{
+    width: 50%;
+    .row-buttons{
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
 .card-item {
 
   h2 {
@@ -17,5 +31,22 @@
     letter-spacing: -0.015em;
 
     color: #9e9e9e;
+  }
+}
+//tabelet
+@media (max-width: 768px) {
+  .main-row{
+    display: flex;
+    flex-direction: row;
+    .col-user{
+      width: 50%;
+    }
+    .col-buttons{
+      width: 70%;
+      .row-buttons{
+        display: flex;
+        flex-direction: row;
+      }
+    }
   }
 }

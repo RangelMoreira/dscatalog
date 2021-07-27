@@ -70,7 +70,11 @@ const ImageUpload = ({onUploadSuccess, productImgUrl}: Props) => {
           </small>
         </div>
       </div>
-      <div className="upload-placeholder">
+      <div className="
+      
+      
+      
+      upload-placeholder">
         {uploadProgress > 0 && (
           <>
             <UploadPlaceholder />

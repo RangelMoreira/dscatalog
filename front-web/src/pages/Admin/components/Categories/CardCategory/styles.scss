@@ -1,3 +1,15 @@
+.main-row {
+  display: flex;
+  flex-direction: row;
+
+  .col-name {
+    width: 80%;
+  }
+
+  .col-category {
+    width: 50%;
+  }
+}
 .card-item {
   h2 {
     font-family: Open Sans;
@@ -8,5 +20,43 @@
     letter-spacing: -0.015em;
     vertical-align: middle;
     margin-top: 8px;
+  }
+}
+
+.row-category-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  .category-button {
+    width: 180px;
+    margin-left: 27px;
+  }
+}
+
+//tabelet
+@media (max-width: 768px) {
+  .main-row {
+    .col-name {
+      width: 50%;
+    }
+    .col-category {
+      width: 30%;
+    }
+  }
+  .row-category-buttons {
+    .category-button {
+      width: 100px;
+      margin-left: 27px;
+    }
+  }
+}
+
+//mobile
+@media (max-width: 576px) {
+  .main-row {
+    .col-name {
+      width: 40%;
+    }
   }
 }

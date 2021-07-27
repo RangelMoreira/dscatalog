@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
 
-  .select-container{
+  .select-container {
     margin-right: 22px;
   }
 }
@@ -22,7 +22,6 @@
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #e1e1e1;
-    
   }
 
   .default-select__indicator-separator {
@@ -31,6 +30,28 @@
 
   .default-select__placeholder {
     color: #9e9e9e !important;
-    
+  }
+}
+
+//tablet breakpoint
+@media (max-width: 768px) {
+  .filters-container {
+    width: 100%;
+  }
+}
+//mobile breakpoints
+@media (max-width: 576px) {
+  .filters-container {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  .select-container {
+    width: 100%;
+    .filter-select-container {
+      width: 78%;
+      margin: 10px 0px !important;
+      
+    }
   }
 }

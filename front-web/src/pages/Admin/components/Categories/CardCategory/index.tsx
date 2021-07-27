@@ -10,14 +10,14 @@ type Props = {
 const CardCategory = ({ category, onRemove }: Props) => {
   return (
     <div className="card-base border-radius-10 card-item">
-      <div className="row">
-        <div className="col-7">
+      <div className="main-row">
+        <div className="col-name">
           <h2 className="content">{category.name}</h2>
         </div>
 
-        <div className="col-5">
-          <div className="row">
-            <div className="col-6">
+        <div className="col-category">
+          <div className="row-category-buttons">
+            <div className="category-button ml-25">
               <Link
                 to={`/admin/categories/${category.id}`}
                 type="button"
@@ -26,7 +26,7 @@ const CardCategory = ({ category, onRemove }: Props) => {
                 EDITAR
               </Link>
             </div>
-            <div className="col-6">
+            <div className="category-button">
               <button
                 type="button"
                 className="btn btn-outline-danger btn-block border-radius-10"

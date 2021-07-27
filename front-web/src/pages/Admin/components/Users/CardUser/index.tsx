@@ -11,14 +11,14 @@ const CardUser = ({ user, onRemove }: Props) => {
 
   return(
     <div className="card-base border-radius-10 card-item ">
-      <div className="row">
-        <div className="col-7">
+      <div className="main-row">
+        <div className="col-user">
           <h2 className="content">{user.firstName} {user.lastName}</h2>
           <span>{user.email}</span>
         </div>
 
-        <div className="col-5">
-          <div className="row">
+        <div className="col-buttons">
+          <div className="row-buttons">
             <div className="col-6">
               <Link
                 to={`/admin/users/${user.id}`}

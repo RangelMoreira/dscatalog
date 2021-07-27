@@ -32,3 +32,18 @@
 .checkbox {
   display: inline;
 }
+
+//tabelet
+@media (max-width: 768px) {
+  .name,.email,.pass{
+    display: flex;
+    flex-direction: column;
+  }
+  .first-name,.password{
+    margin-bottom: 32px;
+  }
+
+  .span-password{
+    width: 100%;
+  }
+}

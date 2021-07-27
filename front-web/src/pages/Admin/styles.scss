@@ -34,4 +34,13 @@
   .admin-container{
     flex-direction: column;
   }
+  .filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    button{
+      margin-bottom: 20px;
+    }
+  }
 }
