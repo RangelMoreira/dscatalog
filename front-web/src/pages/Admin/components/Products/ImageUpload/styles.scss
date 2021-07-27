@@ -43,3 +43,36 @@
     height: 200px;
   }
 }
+//tabelet
+@media(max-width: 768px){
+  .upload-button-container label{
+    word-wrap: none;
+    width: 200px;
+  }
+}
+
+//mobile
+@media(max-width: 576px){
+  .upload-button-container label{
+    width: 250px;//tamanho dos outros inputs
+
+  }
+  small{
+    display: none;
+  }
+  .upload-placeholder{
+    width: 100vw !important;
+    margin-left: 40px;
+
+    .uploaded-image{
+      align-self: center;
+    }
+
+    .upload-progress{
+       margin-left: -20px;
+    }
+    .upload-progress-container{
+      margin-left: 20px;
+    }
+  }
+}

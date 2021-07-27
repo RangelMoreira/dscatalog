@@ -1,6 +1,10 @@
 .product-card-admin {
   margin-bottom: 20px;
+  padding: 10px 20px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   .product-currency {
     font-size: 14px;
@@ -14,10 +18,65 @@
 .product-card-image-admin {
   width: 100px;
   height: 100px;
+  margin: 0px 10px;
+}
+
+.buttons-container{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  padding-left: 30px;
 }
 
 .product-card-name-admin {
   font-size: 18px;
   line-height: 25px;
   letter-spacing: -0.015em;
+}
+
+/*tablet*/
+@media(max-width: 768px){
+  .card-content{
+    margin-left: 10px;
+  }
+}
+
+//mobile
+@media(max-width: 576px){
+  .product-card-admin{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-content{
+    width: 100%;
+    
+    padding: 10px;
+  }
+  .buttons-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0px;
+  }
+  .btn-product{
+    width: 135px !important;
+    margin: 0px !important;
+  }
+  .border-img {
+    border-bottom: 1px solid #cecece;
+  }
+
+
 }

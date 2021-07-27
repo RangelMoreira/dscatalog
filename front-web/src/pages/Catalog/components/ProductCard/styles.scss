@@ -1,6 +1,4 @@
 .product-card {
-  width: 245px;
-  padding-top: 20px;
   padding: 20px 20px 30px 20px;
   text-align: center;
 
@@ -26,4 +24,11 @@
 .product-card-image {
   width: 160px;
   height: 160px;
+}
+
+//tablet
+@media(max-width: 768px){
+  .product-card{
+    padding: 10px 10px 30px 10px;
+  }
 }

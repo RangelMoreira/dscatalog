@@ -1,17 +1,41 @@
-.btn-icon{
+.default-button {
+  display: flex;
+}
+
+.btn-icon {
   height: 70px;
   width: 380px;
   border-radius: 10px 0 0 10px;
   text-transform: uppercase;
 }
 
-.btn-icon-content{
-  background-color: #33569B;
+.btn-icon-content {
+  background-color: #33569b;
   width: 70px;
   border-radius: 0 10px 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFF;
+  color: #fff;
+}
 
+//mobile
+@media (max-width: 576px) {
+  .default-button {
+    max-width: 70vw;
+    height: 50px;
+    margin-bottom: 15px;
+
+    button{
+      h5{
+        font-size: 1em;
+      }
+    }
+  }
+  .btn-icon{
+    height: 50px;
+  }
+  .btn-icon-content{
+    height: 50px;
+  }
 }

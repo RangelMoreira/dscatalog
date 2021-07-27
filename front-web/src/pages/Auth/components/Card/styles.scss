@@ -13,3 +13,15 @@
   color: #263238;
   font-weight: normal;
 }
+
+//mobile
+@media(max-width: 576px){
+  .auth-card{
+    margin: 0 auto; //centraliza o que tem por fora
+    width: 90vw;
+    padding: 10px;
+    display: flex;//centraliza o que tem por dentro
+    align-items: center;
+    flex-direction: column;
+  }
+}

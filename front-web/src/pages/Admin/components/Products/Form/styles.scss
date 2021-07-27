@@ -1,3 +1,8 @@
+.product-form-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .categories-select__control {
   height: 50px;
   border-radius: 10px !important;
@@ -8,7 +13,29 @@
   display: none;
 }
 
-.categories-select__placeholder{
+.categories-select__placeholder {
   color: #9e9e9e !important;
-  
+}
+
+//mobile
+@media (max-width: 576px) {
+  .product-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 250px;
+    }
+
+    .categories-select__control {
+      width: 250px;
+      min-width: 50px;
+      height: 100%;
+    }
+
+    .input-base {
+      width: 250px;
+    }
+  }
 }
