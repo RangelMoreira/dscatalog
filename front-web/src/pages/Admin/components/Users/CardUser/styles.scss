@@ -9,7 +9,13 @@
     .row-buttons{
       display: flex;
       flex-direction: row;
+      .col-btn{
+        width: 50%;
+        margin-left: 10px;
+        
+      }
     }
+  
   }
 }
 .card-item {
@@ -46,6 +52,16 @@
       .row-buttons{
         display: flex;
         flex-direction: row;
+        .col-btn{
+          
+          width: 45%;
+          margin-left: 8px;
+
+          a,button{
+            font-size: 15px;
+          }
+          
+        } 
       }
     }
   }

@@ -34,14 +34,15 @@
 }
 
 //tablet breakpoint
+// @media (max-width: 768px) {
+//   .filters-container {
+//     width: 100%;
+//   }
+// }
+//mobile breakpoints
 @media (max-width: 768px) {
   .filters-container {
     width: 100%;
-  }
-}
-//mobile breakpoints
-@media (max-width: 576px) {
-  .filters-container {
     display: flex;
     flex-direction: column;
    

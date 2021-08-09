@@ -46,14 +46,14 @@
   }
 }
 //tablet
-@media (max-width: 768px) {
-  .product-filters-container {
-    width: 100%;
-  }
-}
+// @media (max-width: 768px) {
+//   .product-filters-container {
+//     width: 100%;
+//   }
+// }
 
 //mobile
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .product-filters-container {
     width: 100%;
     height: 200px;
