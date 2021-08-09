@@ -37,8 +37,9 @@ const ProductDetails = () => {
         </Link>
         <div className="product-details-info">
 
+
           {isLoading ? <ProductInfoLoader /> : (
-            <>
+            <div className="image-price">
               <div className="product-details-card text-center">
                 <img src={product?.imgUrl} alt={product?.name}
                   className="product-details-image" />
@@ -50,7 +51,7 @@ const ProductDetails = () => {
 
                 {product?.price && <ProductPrice price={product?.price} />}
               </div>
-            </>
+            </div>
           )}
 
 
