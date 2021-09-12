@@ -27,7 +27,7 @@ const NavBar: React.FC = () => {
       <Image source={menu} />
       {show ? (
           <View style={nav.options}>
-            {/* <TouchableOpacity style={nav.option} onPress={() => navigate("Home")}>
+            <TouchableOpacity style={nav.option} onPress={() => navigate("Home")}>
               <Text
                 style={[
                   nav.textOption, 
@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
               >
                 Home
               </Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
 
             <TouchableOpacity style={nav.option} onPress={() => navigate("Catalog")}>
               <Text 
@@ -59,17 +59,6 @@ const NavBar: React.FC = () => {
                 ADM
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={nav.option} onPress={() => navigate("Login")}>
-              <Text
-                style={[
-                  nav.textOption, 
-                  route.name === "ADM" ? nav.textActive: null
-                ]}
-              >
-                ADM
-              </Text>
-            </TouchableOpacity>
-
           </View >
         ): null
       }
