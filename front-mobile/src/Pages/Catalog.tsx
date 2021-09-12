@@ -1,57 +1,59 @@
-import React from "react";
-import { ScrollView } from "react-native";
-import { ProductCard } from "../components";
+import React, { useState, useEffect } from "react";
+import { ScrollView, ActivityIndicator } from "react-native";
+import { ProductCard, SearchInput } from "../components";
+import { api } from "../services";
 
-import productImg from '../assets/produto.png';
 import { theme } from "../styles";
 
-const products = [
-  {
-    id: 1,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-  {
-    id: 2,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-  {
-    id: 3,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-  {
-    id: 4,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-  {
-    id: 5,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-  {
-    id: 6,
-    imgUrl: productImg,
-    name: "Computedor Desktop - Intel Core i7",
-    price: 2279.0
-  },
-];
-
 const Catalog: React.FC = () => {
-  return (
-    
-    <ScrollView contentContainerStyle={theme.scrollConatiner}>
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-      {products.map((product) => (
-        <ProductCard  {...product}/>
-      ))}
+  async function fillProducts() {
+    setLoading(true);
+
+    const res = await api.get(
+      `/products?page=0&linesPerPage=12&direction=ASC&orderBy=name`
+    );
+
+    setProducts(res.data.content)
+
+    setLoading(false);
+
+  }
+
+  useEffect(() => {
+    fillProducts();
+  }, [])
+
+  const data = search.length > 0 ?
+    products.filter(product =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    )
+    : products
+
+  return (
+
+    <ScrollView contentContainerStyle={theme.scrollConatiner}>
+      
+      <SearchInput 
+        placeholder="Nome do produto" 
+        search={search} 
+        setSearch={setSearch} 
+      />
+
+      {loading ? 
+        (
+          <ActivityIndicator size="large" />
+          ) :
+
+          (data.map((product) => (
+            <ProductCard  {...product} key={product.id}/>
+          ))
+        
+        )
+      }
     </ScrollView>
   )
 }
