@@ -25,8 +25,6 @@ export async function login(userInfo: AuthProps){
  
 }
 
-
-
 async function setAsyncKeys(key:string, value:string){
   try{
     await AsyncStorage.setItem(key,value)
