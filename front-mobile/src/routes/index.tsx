@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Text} from "react-native";
-import { Catalog, Home, Login, ProductDetails } from '../Pages';
+import { Catalog, Home, Login, ProductDetails,Dashboard } from '../Pages';
 import { NavBar } from '../components';
 import { colors, nav } from '../styles';
 
@@ -15,7 +15,7 @@ const Routes:React.FC =() =>{
       screenOptions={{
         headerTitle: " ",
         headerStyle:{
-          backgroundColor: colors.primary
+          backgroundColor: colors.primary,
         },
         headerLeft: () => <HeaderText/>,
         headerRight: () => <NavBar/>,
@@ -38,7 +38,11 @@ const Routes:React.FC =() =>{
         name="Login" 
         component={Login}
       />
-       
+      {/*Dashboard administrativo*/}
+      <Stack.Screen 
+        name="Dashboard" 
+        component={Dashboard}
+      /> 
     </Stack.Navigator>
   )
 }

@@ -277,13 +277,14 @@ const nav = StyleSheet.create({
     width: deviceWidth,
     height: 120,
     backgroundColor: colors.primary,
-    // marginTop:125,
-    marginRight: -20,
+    marginTop:135,
     padding: 20,
     justifyContent: "space-between",
   },
   option:{
-    paddingVertical: 5,
+    padding: 5,
+
+    // width: deviceWidth,
   },
   textOption:{
     color: colors.white,

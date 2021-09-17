@@ -38,6 +38,7 @@ export async function isAuthenticated(){
   try{
     const token = await AsyncStorage.getItem("token");
     token ? console.log("Logado") : console.warn("Deslogado");
+    console.log(token);
     
   }catch(e){
     console.log(e);

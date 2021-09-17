@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 import { text, theme } from '../styles';
 import eyesOpened from "../assets/eyes-opened.png";
@@ -7,8 +8,9 @@ import arrow from "../assets/arrow.png";
 import { isAuthenticated, login } from '../services/auth';
 
 const Login: React.FC = () => {
-
+  const navigation = useNavigation();
   const [hidePassword, setHidePassword] = useState(false);
+  const [userFetchData, setUserFetchData] = useState({});
   const [userInfo, setUserInfo] = useState(
     {
       username: "",
@@ -22,6 +24,9 @@ const Login: React.FC = () => {
 
   async function handleLogin() {
     const data = await login(userInfo);
+    setUserFetchData(data);
+    
+    navigation.navigate('Dashboard');
     
   }
 
@@ -61,7 +66,7 @@ const Login: React.FC = () => {
                 style={theme.toggle}
                 onPress={() => setHidePassword(!hidePassword)}
               >
-                <Image source={hidePassword ?  eyesOpened : eyesClosed} />
+                <Image source={hidePassword ? eyesClosed : eyesOpened} />
               </TouchableOpacity>
             </View>
           </View>
