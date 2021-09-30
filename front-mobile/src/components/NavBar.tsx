@@ -27,9 +27,11 @@ const NavBar: React.FC = () => {
         onPress={() => setShow(!show)}
       >
         <Image source={menu} />
+
       </TouchableOpacity>
 
       {show ? (
+        
         <View style={nav.options}>
           <TouchableOpacity
             style={nav.option}
@@ -72,7 +74,6 @@ const NavBar: React.FC = () => {
           </TouchableOpacity>
         </View>
       ) : null}
-
     </>
   )
 };

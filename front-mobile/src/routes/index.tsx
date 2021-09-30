@@ -18,7 +18,7 @@ const Routes:React.FC =() =>{
           backgroundColor: colors.primary,
         },
         headerLeft: () => <HeaderText/>,
-        headerRight: () => <NavBar/>,
+        headerRight: () =><NavBar/>,
 
       }}
     >  
