@@ -20,7 +20,6 @@ export async function login(userInfo: AuthProps){
   const {access_token} = result.data;
   
   setAsyncKeys("@token", access_token);
-  console.warn(access_token);
   
   return result;
  
@@ -38,11 +37,20 @@ async function setAsyncKeys(key:string, value:string){
 export async function isAuthenticated(){
   try{
     const token = await AsyncStorage.getItem("@token");
-    token ? console.warn("Logado") : console.warn("Deslogado");
-    console.log(token);
+    return token ? true : false;
     
   }catch(e){
     console.log(e);
     
   }
 }
+
+export async function doLogout(){
+  try {
+    AsyncStorage.removeItem("@token")
+  } catch (error) {
+    console.warn(error);
+    
+  }
+}
+

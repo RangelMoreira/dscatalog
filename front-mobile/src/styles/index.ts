@@ -74,6 +74,9 @@ const text = StyleSheet.create({
     color: colors.darkGray, 
     textTransform: "uppercase",
     marginBottom: 50
+  },
+  logoutText:{
+    color: colors.white,
   }
 })
 
@@ -292,7 +295,45 @@ const nav = StyleSheet.create({
   },
   textActive: {
     fontWeight: "bold",
+  },
+  logoutBtn:{
+    width:60,
+    height: 30,
+    borderWidth: 1,
+    borderColor: colors.white,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 20,
+  },
+
+})
+
+const tabbar = StyleSheet.create({
+  container: {
+    // width: '100%',
+    width: deviceWidth,
+    height: 80,
+    backgroundColor: colors.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around', 
+  }, 
+  pill:{
+    padding: 15,
+    backgroundColor: colors.lightGray,
+    borderRadius: 30,
+  },
+  pillActive:{
+    backgroundColor: colors.bluePill,
+  },
+  pillText:{
+    fontWeight: "bold",
+    color: colors.mediumGray
+  },
+  pillTextActive:{
+    color: colors.primary
   }
 })
 
-export {colors, theme, text, nav}
+export {colors, theme, text, nav, tabbar}
