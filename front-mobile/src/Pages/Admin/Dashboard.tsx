@@ -17,8 +17,9 @@ const DashBoard: React.FC = () => {
   return (
     <View >
       <TabBar screen={screen} setScreen={setScreen} />
+      {/* O set screen serve para fazer a navegação entre as páginas */}
       {screen === "products" && <Products setScreen={setScreen}/>}
-      {screen === "newProduct" && <FormProduct />}
+      {screen === "newProduct" && <FormProduct setScreen={setScreen}/>}
       {screen === "categories" && <Categories />}
       {screen === "users" && <Users />}
     </View>
